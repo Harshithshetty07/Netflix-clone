@@ -16,6 +16,9 @@ function Login() {
   const getInputData = (e) => {
     e.preventDefault();
     console.log(fullName, email, password)
+    setFullName("");
+    setEmail("");
+    setPassword("");
   }
 
   return (
