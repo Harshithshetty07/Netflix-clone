@@ -1,27 +1,14 @@
-import { createBrowserRouter, RouterProvider} from 'react-router-dom';
-import Body from './components/Body';
-import Login from './components/Login'
-import Browse from './components/Browse';
-
+import React from 'react'
+import Body from './components/Body'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-
-  const appRouter = createBrowserRouter([
-    {
-      path: "/",
-      element: <Login />
-    },
-    {
-      path: "/browse",
-      element: <Browse/>
-    }
-  ])
-
   return (
     <div>
-      <RouterProvider router={appRouter} />
+      <Body/>
+      <Toaster/>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

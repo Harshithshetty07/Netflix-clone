@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import databaseconnection from './utils/database.js';
 import cookieParser from 'cookie-parser';
 import userRoute from './routes/userRoute.js'
-
+import cors from 'cors';
 
 
 dotenv.config({
@@ -17,6 +17,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 
+const corsOptions = {
+    origin: "http://localhost:3000",
+    credentials: true
+}
+app.use(cors(corsOptions));
+
 // Database connection
 databaseconnection();
 
@@ -25,12 +31,6 @@ databaseconnection();
 app.use("/api/v1/user", userRoute)
 
 
-app.get("/", (req, res) => {
-    res.status(200).json({
-        message: "Hello Welcome",
-        success: true
-    })
-})
 
 /* http://localhost:8080/api/v1/user/register     */
 
