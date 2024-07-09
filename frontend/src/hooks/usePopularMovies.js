@@ -1,15 +1,16 @@
-import axios from 'axios'
-import { options, Popular_Movies } from '../components/utils/constant'
-import { useDispatch } from 'react-redux';
-import { getPopularMovies } from '../redux/userSlice';
+import axios from "axios";
+import { Popular_Movie, options } from '../utils/constant';
+import { getPopularMovie } from '../redux/movieSlice';
+import {useDispatch} from "react-redux";
+
 
 const usePopularMovies = async () => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     try {
-        const res = await axios.get(Popular_Movies, options);
-        dispatch(getPopularMovies(res.data.results))
+        const res = await axios.get(Popular_Movie, options);
+        dispatch(getPopularMovie(res.data.results))
     } catch (error) {
-        console.log(error)
+        console.log(error);
     }
 }
 

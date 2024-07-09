@@ -1,52 +1,48 @@
 import React, { useEffect } from 'react'
-import Header from './Header'
-import { useSelector } from 'react-redux'
-import { useNavigate} from 'react-router-dom'
-import MainContainer from './MainDashBoard/MainContainer';
-import MovieContainer from './MainDashBoard/MovieContainer';
+import Header from './Header';
+import { useSelector} from "react-redux";
+import { useNavigate } from "react-router-dom";
+import MainContainer from './MainContainer';
+import MovieContainer from './MovieContainer';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import usePopularMovies from '../hooks/usePopularMovies';
 import useTopRatedMovies from '../hooks/useTopRatedMovies';
-import useUpComingMovies from '../hooks/useUpComingMovies';
-import SearchMovie from './MainDashBoard/SearchMovie';
+import useUpcomingMovies from '../hooks/useUpcomingMovies';
+import SearchMovie from './SearchMovie';
 
+const Browse = () => {
+    const user = useSelector(store => store.app.user);
+    const toggle = useSelector(store => store.movie.toggle);
+    const navigate = useNavigate();
 
-function Browse() {
+    // my custom hooks
+    useNowPlayingMovies();
+    usePopularMovies();
+    useTopRatedMovies();
+    useUpcomingMovies();
 
-  const user = useSelector(store => store.app.user);
-  const toggle = useSelector(store=> store.app.toggle)
-  
-  const navigate = useNavigate();
-
-  // My Custom Hook 
-  useNowPlayingMovies()
-  usePopularMovies()
-  useTopRatedMovies()
-  useUpComingMovies()
-
-  useEffect(() => {
-    if(!user) {
-      navigate("/")
-    }
-  }, [])
-
-
-  return (
-    <div>
-      <Header/>
-      <div>
-        {
-          toggle ? <SearchMovie/> : (
-            <>
-            <MainContainer/>
-            <MovieContainer/>
-            </>
-          )
+    useEffect(() => {
+        if (!user) {
+            navigate("/");
         }
-        
-      </div>
-    </div>
-  )
+    }, []);
+    return (
+        <div >
+            <Header />
+            <div>
+                {
+                    toggle ? <SearchMovie /> : (
+                        <>
+                            <MainContainer />
+                            <MovieContainer />
+                        </>
+
+                    )
+                }
+
+            </div>
+        </div>
+    )
 }
 
 export default Browse
