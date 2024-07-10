@@ -34,21 +34,20 @@ const Login = () => {
                     },
                     withCredentials: true,
                 });
-                if (res.data && res.data.success) {
+                if (res.data.success) {
                     toast.success(res.data.message);
-                    dispatch(setUser(res.data.user));
-                    navigate('/browse');
-                } else {
-                    throw new Error(res.data ? res.data.message : 'Login failed');
                 }
+                dispatch(setUser(res.data.user));
+                navigate('/browse');
             } catch (error) {
-                toast.error(error.response && error.response.data ? error.response.data.message : error.message);
+                toast.error(error.response.data.message);
                 console.log(error);
             } finally {
                 dispatch(setLoading(false));
             }
         } else {
             // register
+            dispatch(setLoading(true));
             const user = { fullName, email, password };
             try {
                 const res = await axios.post(`${API_END_POINT}/register`, user, {
@@ -57,14 +56,12 @@ const Login = () => {
                     },
                     withCredentials: true,
                 });
-                if (res.data && res.data.success) {
+                if (res.data.success) {
                     toast.success(res.data.message);
-                    setIsLogin(true);
-                } else {
-                    throw new Error(res.data ? res.data.message : 'Registration failed');
                 }
+                setIsLogin(true);
             } catch (error) {
-                toast.error(error.response && error.response.data ? error.response.data.message : error.message);
+                toast.error(error.response.data.message);
                 console.log(error);
             } finally {
                 dispatch(setLoading(false));
