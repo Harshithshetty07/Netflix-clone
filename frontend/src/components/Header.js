@@ -21,7 +21,7 @@ const Header = () => {
                 toast.success(res.data.message);
             }
             dispatch(setUser(null));
-            navigate('/');
+            navigate('/browse');
         } catch (error) {
             console.log(error);
         }
