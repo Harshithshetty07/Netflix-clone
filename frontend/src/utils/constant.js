@@ -1,4 +1,5 @@
-export const API_END_POINT =  "http://localhost:8088/api/v1/user";
+export const API_END_POINT = "https://netflix-clone-backend-ten.vercel.app/api/v1/user";
+
 
 export const options = {
     method: 'GET',
