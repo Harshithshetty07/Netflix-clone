@@ -2,13 +2,10 @@ import express from 'express';
 import dotenv from 'dotenv';
 import databaseconnection from './utils/database.js';
 import cookieParser from 'cookie-parser';
-import userRoute from './routes/userRoute.js'
+import userRoute from './routes/userRoute.js';
 import cors from 'cors';
 
-
-dotenv.config({
-    path: ".env"
-});
+dotenv.config();
 
 const app = express();
 
@@ -18,23 +15,23 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: "https://netflix-clone-backend-sooty.vercel.app/",
-    credentials: true
-}
+    origin: process.env.FRONTEND_URL,
+    credentials: true,
+};
 app.use(cors(corsOptions));
 
 // Database connection
 databaseconnection();
 
-
 // API 
-app.use("/api/v1/user", userRoute)
+app.use("/api/v1/user", userRoute);
 
+// Handle root URL
+app.get('/', (req, res) => {
+    res.send('Backend is running');
+});
 
-
-/* http://localhost:8080/api/v1/user/register     */
-
-
-app.listen(process.env.PORT, () => {
-    console.log(`Server listening at port ${process.env.PORT}`);
+const PORT = process.env.PORT || 8088;
+app.listen(PORT, () => {
+    console.log(`Server listening at port ${PORT}`);
 });
