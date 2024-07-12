@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 const corsOptions = {
-    origin: "http://localhost:3002",
+    origin: "https://netflix-clone-backend-ten.vercel.app/",
     credentials: true
 }
 app.use(cors(corsOptions));
