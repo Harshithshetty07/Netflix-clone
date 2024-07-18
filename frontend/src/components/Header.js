@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { IoIosArrowDropdown } from 'react-icons/io';
 import { useSelector, useDispatch } from 'react-redux';
-import { API_END_POINT } from '../utils/constant';
 import axios from 'axios';
 import { setUser } from '../redux/userSlice';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { setToggle } from '../redux/movieSlice';
+import { API_END_POINT } from '../utils/constant';
 
 const Header = () => {
     const user = useSelector((store) => store.app.user);
     const toggle = useSelector((store) => store.movie.toggle);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    // Memoize the toggle button text based on the toggle state
+    const toggleButtonText = useMemo(() => (toggle ? 'Home' : 'Search Movie'), [toggle]);
 
     const logoutHandler = async () => {
         try {
@@ -55,7 +58,7 @@ const Header = () => {
                             onClick={toggleHandler}
                             className="bg-red-800 text-white px-2 sm:px-4 py-1 sm:py-2 ml-1 sm:ml-2 text-xs sm:text-sm md:text-base"
                         >
-                            {toggle ? 'Home' : 'Search Movie'}
+                            {toggleButtonText}
                         </button>
                     </div>
                 </div>
