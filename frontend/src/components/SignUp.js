@@ -37,7 +37,7 @@ const AuthForms = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full  px-3 text-white bg-neutral-700 border-none py-4 leading-tight focus:outline-none focus:shadow-outline"
                       id="username"
                       type="text"
                       placeholder="UserName"
@@ -58,7 +58,7 @@ const AuthForms = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full text-white bg-neutral-700 border-none py-4 px-3 leading-tight focus:outline-none focus:shadow-outline"
                       id="email"
                       type="email"
                       placeholder="Email"
@@ -79,7 +79,7 @@ const AuthForms = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-white mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full text-white bg-neutral-700 border-none py-4 px-3  mb-3 leading-tight focus:outline-none focus:shadow-outline"
                       id="password"
                       type="password"
                       placeholder="******************"
@@ -121,7 +121,7 @@ const AuthForms = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full  px-3 text-white bg-neutral-700 border-none py-4 leading-tight focus:outline-none focus:shadow-outline"
                       id="email"
                       type="email"
                       placeholder="Email"
@@ -142,7 +142,7 @@ const AuthForms = () => {
                   render={({ field }) => (
                     <input
                       {...field}
-                      className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                      className="shadow appearance-none border rounded w-full px-3 text-white bg-neutral-700 border-none py-4 mb-3 leading-tight focus:outline-none focus:shadow-outline"
                       id="password"
                       type="password"
                       placeholder="******************"
