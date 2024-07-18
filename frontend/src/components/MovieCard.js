@@ -16,7 +16,7 @@ const MovieCard = ({ posterPath,movieId}) => {
   }
 
   return (
-    <div className='w-48 pr-2' onClick={handleOpen}>
+    <div className='w-48 pr-2 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-150 ' onClick={handleOpen}>
       <img src={`${TMDB_IMG_URL}/${posterPath}`} alt="movie-banner" />
     </div>
   )
